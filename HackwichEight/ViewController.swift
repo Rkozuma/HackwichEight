@@ -9,20 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var slider: UISlider!
     
     var currentValue = 0
     
-    override func viewDidLoad() {
+    //HW8 PART 3 - PART 2
+    
+    var targetValue = 0
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        currentValue = lroundf(slider.value)
+        targetValue = Int.random(in: 0...100)
+        
+        // Call the startNewRoundFunction
+        startNewRound()
+        
     }
-
-
+    
     @IBAction func guessNumberPressed(_ sender: Any) {
         
-        let message = "The value is: \(currentValue)"
+        let message = "The value is: \(currentValue)" + "\n The target value is: \(targetValue)"
         
         let alert = UIAlertController(title: "Hello World", message: message, preferredStyle: .alert)
         
@@ -31,6 +42,8 @@ class ViewController: UIViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+        
+        startNewRound()
         
         
     }
@@ -46,6 +59,13 @@ class ViewController: UIViewController {
         
     }
     
+    func startNewRound()
+    {
+        targetValue = Int.random(in: 0...100)
+        currentValue = lroundf(slider.value)
+        
+        
+    }
     
     
 }
