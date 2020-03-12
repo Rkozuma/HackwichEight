@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var slider: UISlider!
     
+    @IBOutlet weak var targetLabel: UILabel!
+    
+    
     var currentValue = 0
     
     //HW8 PART 3 - PART 2
@@ -29,6 +32,8 @@ class ViewController: UIViewController {
         // Call the startNewRoundFunction
         startNewRound()
         
+        updateTargetLabel()
+        
     }
     
     @IBAction func guessNumberPressed(_ sender: Any) {
@@ -44,6 +49,8 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
         startNewRound()
+        
+        updateTargetLabel()
         
         
     }
@@ -67,6 +74,20 @@ class ViewController: UIViewController {
         
     }
     
+    // PROBLEM SET #1
+    
+    func updateTargetLabel()
+    {
+        self.targetLabel.text = String(targetValue)
+        
+    }
+    
+    
+    
+    
     
 }
+
+
+
 
